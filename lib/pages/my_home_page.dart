@@ -15,8 +15,8 @@ class _MyHomeAppState extends State<MyHomeApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sayfa ${page + 1}'),
         backgroundColor: Colors.green,
+        title: Text('Sayfa ${page + 1}'),
       ),
       body: ListView.builder(
         itemCount: namesList[page].length,

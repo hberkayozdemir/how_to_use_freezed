@@ -2,23 +2,37 @@ import 'package:how_to_use_freezed/data_initialization/load_data.dart';
 import 'package:how_to_use_freezed/nested_class.dart';
 
 NestedClass loadFamilyTree() {
-  familyHierarchy.addChild(greatGrandParents);
+  var newParents1 = parents1.copyWith(children: [
+    children1,
+    children2,
+  ]);
 
-  greatGrandParents.addChild(grandParents1);
-  greatGrandParents.addChild(grandParents2);
+  var newParents2 = parents2.copyWith(children: [
+    children3,
+    children4,
+  ]);
 
-  grandParents1.addChild(parents1);
-  grandParents1.addChild(parents2);
-  grandParents1.addChild(parents3);
+  var newParents3 = parents3.copyWith(children: [
+    children5,
+    children6,
+  ]);
 
-  parents1.addChild(children1);
-  parents1.addChild(children2);
+  var newGrandParents1 = grandParents1.copyWith(children: [
+    newParents1,
+    newParents2,
+    newParents3,
+  ]);
 
-  parents2.addChild(children3);
-  parents2.addChild(children4);
+  var newGrandParents2 = grandParents2.copyWith(children: []);
 
-  parents3.addChild(children5);
-  parents3.addChild(children6);
+  var newGreatGrandParents = greatGrandParents.copyWith(children: [
+    newGrandParents1,
+    newGrandParents2,
+  ]);
 
-  return familyHierarchy;
+  var newFamilyTree = familyHierarchy.copyWith(children: [
+    newGreatGrandParents,
+  ]);
+
+  return newFamilyTree;
 }

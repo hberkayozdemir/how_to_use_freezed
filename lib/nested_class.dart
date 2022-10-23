@@ -1,31 +1,18 @@
-class NestedClass {
-  NestedClass({
-    required this.name,
-    required this.surname,
-    required this.age,
-    required this.children,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final String name;
-  final String surname;
-  final int age;
-  List<NestedClass> children = [];
+part 'nested_class.freezed.dart';
 
-  addChild(NestedClass child) => children.add(child);
+@freezed
+class NestedClass with _$NestedClass {
+  const NestedClass._();
+  const factory NestedClass({
+    required String name,
+    required String surname,
+    required int age,
+    required List<NestedClass> children,
+  }) = _NestedClass;
 
-  NestedClass copyWith({
-    String? name,
-    String? surname,
-    int? age,
-    List<NestedClass>? children,
-  }) =>
-      NestedClass(
-        name: name ?? this.name,
-        surname: surname ?? this.surname,
-        age: age ?? this.age,
-        children: children ?? this.children,
-      );
-
-  factory NestedClass.initial() => NestedClass(
-      name: 'Soy ağacı', surname: 'Yaş dağılımı', age: 500, children: []);
+/* 3a */  // add const factory NestedClass.initial()
+  factory NestedClass.initial() => const NestedClass(
+      name: 'Soy Ağacı', surname: 'Yaş Çizgisi', age: 500, children: []);
 }
